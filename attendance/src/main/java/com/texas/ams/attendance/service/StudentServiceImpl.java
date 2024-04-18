@@ -76,4 +76,24 @@ public class StudentServiceImpl implements StudentService {
             return studentOptional.get();
         }
     }
+
+    @Override
+    public void update(Integer id, StudentDto studentDto) {
+        Optional<Student> studentOptional = studentRepo.findById(id);
+        if (studentOptional.isEmpty()) {
+            throw new RuntimeException("Student Not Found");
+        } else {
+            Student student = studentOptional.get();
+            student.setName(studentDto.getName());
+            student.setFaculty(studentDto.getFaculty());
+            student.setSemester(studentDto.getSemester());
+            student.setEmail(studentDto.getEmail());
+            student.setAddress(studentDto.getAddress());
+            student.setContact(studentDto.getContact());
+            studentRepo.save(student);
+        }
+    }
+
+
+
 }

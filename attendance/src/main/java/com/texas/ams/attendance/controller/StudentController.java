@@ -58,4 +58,12 @@ public class StudentController {
                 Map.of("message", "Student entity fetched successfully.", "data", student)
         );
     }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity updateStudent(@PathVariable("id") Integer id, @RequestBody StudentDto studentDto) {
+        studentService.update(id, studentDto);
+        return ResponseEntity.ok(
+                Map.of("message", "Student updated successfully.")
+        );
+    }
 }
