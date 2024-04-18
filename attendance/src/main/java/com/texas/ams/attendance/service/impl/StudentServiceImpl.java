@@ -1,7 +1,8 @@
-package com.texas.ams.attendance.service;
+package com.texas.ams.attendance.service.impl;
 
 import com.texas.ams.attendance.dto.StudentDto;
 import com.texas.ams.attendance.model.Student;
+import com.texas.ams.attendance.service.StudentService;
 import org.springframework.stereotype.Service;
 import com.texas.ams.attendance.repo.StudentRepo;
 

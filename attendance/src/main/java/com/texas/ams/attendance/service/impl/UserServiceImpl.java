@@ -1,7 +1,8 @@
-package com.texas.ams.attendance.service;
+package com.texas.ams.attendance.service.impl;
 
 import com.texas.ams.attendance.dto.UserDto;
 import com.texas.ams.attendance.model.User;
+import com.texas.ams.attendance.service.UserService;
 import org.springframework.stereotype.Service;
 import com.texas.ams.attendance.repo.UserRepo;
 
