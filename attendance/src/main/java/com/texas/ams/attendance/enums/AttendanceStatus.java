@@ -1,6 +1,6 @@
 package com.texas.ams.attendance.enums;
 
-public class AttendanceStatus {
+public enum AttendanceStatus {
     PRESENT,
     ABSENT;
 }

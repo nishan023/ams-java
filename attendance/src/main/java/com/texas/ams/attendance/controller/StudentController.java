@@ -2,6 +2,7 @@ package com.texas.ams.attendance.controller;
 
 import com.texas.ams.attendance.dto.StudentDto;
 import com.texas.ams.attendance.model.Student;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.texas.ams.attendance.service.StudentService;
@@ -20,7 +21,7 @@ public class StudentController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity saveStudent(@RequestBody StudentDto studentDto) {
+    public ResponseEntity saveStudent(@Valid @RequestBody StudentDto studentDto) {
         Integer studentId = studentService.save(studentDto);
         return ResponseEntity.ok(
                 Map.of("message", "Student saved successfully.", "studentId", studentId)

@@ -1,5 +1,6 @@
 package com.texas.ams.attendance.model;
 
+import com.texas.ams.attendance.enums.Role;
 import jakarta.persistence.*;
 
 @Entity
@@ -14,20 +15,25 @@ public class User {
     public String username;
     @Column(name="password",nullable=false)
     public String password;
+    @Enumerated(EnumType.STRING)
+    @Column(name="role",nullable = false)
+    public Role role;
 
 
-    public User(int id, String name, String username, String password, String role) {
+    public User(int id, String name, String username, String password, Role role) {
         this.id = id;
         this.name = name;
+        this.role=role;
         this.username = username;
         this.password = password;
 
     }
 
-    public User(String name, String username, String password, String role) {
+    public User(String name, String username, String password, Role role) {
         this.name = name;
         this.username = username;
         this.password = password;
+        this.role=role;
 
     }
     public User() {}
@@ -62,6 +68,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     @Override

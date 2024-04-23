@@ -2,6 +2,7 @@ package com.texas.ams.attendance.controller;
 
 import com.texas.ams.attendance.dto.UserDto;
 import com.texas.ams.attendance.model.User;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.texas.ams.attendance.service.UserService;
@@ -20,7 +21,7 @@ public class UserController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity saveUser(@RequestBody UserDto userDto) {
+    public ResponseEntity saveUser(@Valid @RequestBody UserDto userDto) {
         Integer userId = userService.save(userDto);
         return ResponseEntity.ok(
                 Map.of("message", "User saved successfully.", "userId", userId)

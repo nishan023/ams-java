@@ -1,13 +1,26 @@
 package com.texas.ams.attendance.dto;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+
 public class StudentDto {
 
     public int id;
+
+    @NotNull(message = "name is mandatory")
+    @NotEmpty(message = "name cannot be blank")
     public String name;
+    @NotNull(message = "facuty is mandatory")
     public String faculty;
+
+    @NotNull(message = "semster is mandatory")
     public String semester;
+    @NotNull(message = "email is mandatory")
     public String email;
+    @NotNull(message = "address is mandatory")
     public String address;
+    @NotNull(message = "contact is mandatory")
     public String contact;
 
     public StudentDto(int id, String name, String faculty, String semester, String email, String address, String contact) {

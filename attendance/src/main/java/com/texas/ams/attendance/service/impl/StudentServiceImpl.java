@@ -1,7 +1,9 @@
 package com.texas.ams.attendance.service.impl;
 
 import com.texas.ams.attendance.dto.StudentDto;
+import com.texas.ams.attendance.exception.StudentNotFoundException;
 import com.texas.ams.attendance.model.Student;
+import com.texas.ams.attendance.repo.UserRepo;
 import com.texas.ams.attendance.service.StudentService;
 import org.springframework.stereotype.Service;
 import com.texas.ams.attendance.repo.StudentRepo;
@@ -36,7 +38,7 @@ public class StudentServiceImpl implements StudentService {
     public StudentDto getById(Integer id) {
         Optional<Student> studentOptional = studentRepo.findById(id);
         if (studentOptional.isEmpty()) {
-            throw new RuntimeException("Student Not Found");
+            throw new StudentNotFoundException("Student Not Found");
         } else {
             Student student = studentOptional.get();
             StudentDto studentDto = new StudentDto(
@@ -72,7 +74,7 @@ public class StudentServiceImpl implements StudentService {
     public Student getStudent(Integer id) {
         Optional<Student> studentOptional = studentRepo.findById(id);
         if (studentOptional.isEmpty()) {
-            throw new RuntimeException("Student Not Found");
+            throw new StudentNotFoundException("Student Not Found");
         } else {
             return studentOptional.get();
         }
@@ -94,7 +96,4 @@ public class StudentServiceImpl implements StudentService {
             studentRepo.save(student);
         }
     }
-
-
-
 }
